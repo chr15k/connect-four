@@ -9,8 +9,10 @@ export default function ConnectFour() {
     winningCells,
     cells,
     allCellsEmpty,
+    moveInProgress,
     handlePlayerTurn,
     handleReset,
+    handleUndo,
   } = useConnectFour();
 
   return (
@@ -20,11 +22,13 @@ export default function ConnectFour() {
         activePlayer={activePlayer}
         winner={winner}
         allCellsEmpty={allCellsEmpty}
+        onHandleUndo={handleUndo}
         onHandleReset={handleReset}
       />
       <ConnectFourCells
         cells={cells}
         winningCells={winningCells}
+        moveInProgress={moveInProgress}
         onHandlePlayerTurn={handlePlayerTurn}
       />
     </div>

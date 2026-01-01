@@ -2,6 +2,7 @@ import type { Cell } from "../types/game";
 import { getCellColorClass } from "../utils/game";
 
 interface ConnectFourCellProps {
+  disabled: boolean;
   index: number;
   cell: Cell;
   highlight: boolean;
@@ -9,6 +10,7 @@ interface ConnectFourCellProps {
 }
 
 export default function ConnectFourCell({
+  disabled,
   index,
   cell,
   highlight,
@@ -17,10 +19,10 @@ export default function ConnectFourCell({
   return (
     <button
       onClick={() => onHandlePlayerTurn(index)}
-      disabled={cell.player !== null}
+      disabled={cell.player !== null || disabled}
       className={`${getCellColorClass(
         cell,
-        highlight,
+        highlight
       )} h-22 w-22 rounded-full flex items-center justify-center`}
     ></button>
   );

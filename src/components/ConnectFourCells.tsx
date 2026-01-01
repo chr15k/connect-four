@@ -4,6 +4,7 @@ import ConnectFourCell from "./ConnectFourCell";
 interface ConnectFourCellsProps {
   cells: Cell[];
   winningCells: number[];
+  moveInProgress: boolean;
   onHandlePlayerTurn: (index: number) => void;
 }
 
@@ -16,12 +17,14 @@ const gridColsClass =
 export default function ConnectFourCells({
   cells,
   winningCells,
+  moveInProgress,
   onHandlePlayerTurn,
 }: ConnectFourCellsProps) {
   return (
     <div className={`grid ${gridColsClass} gap-4 mt-4`}>
       {cells.map((cell, index) => (
         <ConnectFourCell
+          disabled={moveInProgress}
           key={index}
           index={index}
           cell={cell}

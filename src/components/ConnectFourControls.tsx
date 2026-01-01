@@ -5,12 +5,14 @@ interface ConnectFourControlsProps {
   winner: Player;
   allCellsEmpty: boolean;
   onHandleReset: () => void;
+  onHandleUndo: () => void;
 }
 
 export default function ConnectFourControls({
   activePlayer,
   winner,
   allCellsEmpty,
+  onHandleUndo,
   onHandleReset,
 }: ConnectFourControlsProps) {
   return (
@@ -23,14 +25,20 @@ export default function ConnectFourControls({
         {winner
           ? `${activePlayer} wins!`
           : allCellsEmpty
-            ? `${activePlayer} starts the game`
-            : `${activePlayer}'s turn`}
+          ? `${activePlayer} starts the game`
+          : `${activePlayer}'s turn`}
       </h2>
       <button
         onClick={onHandleReset}
-        className="absolute right-1 cursor-pointer"
+        className="absolute right-2 cursor-pointer"
       >
         Reset
+      </button>
+      <button
+        onClick={onHandleUndo}
+        className="absolute right-20 cursor-pointer"
+      >
+        Undo
       </button>
     </div>
   );

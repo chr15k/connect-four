@@ -12,3 +12,4 @@ export interface WinResult {
 }
 
 export type Player = "Red" | "Yellow" | null;
+export type History = Cell[][];
