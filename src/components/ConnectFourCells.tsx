@@ -1,27 +1,31 @@
-import { COLS, type Cell } from "../types/game";
+import { COLS, ROWS, type Cell } from "../types/game";
 import ConnectFourCell from "./ConnectFourCell";
 
 interface ConnectFourCellsProps {
   cells: Cell[];
   winningCells: number[];
   moveInProgress: boolean;
+  animatingCell: number | null;
   onHandlePlayerTurn: (index: number) => void;
 }
-
-const gridColsClass =
-  {
-    7: "grid-cols-7",
-    6: "grid-cols-6",
-  }[COLS] || "grid-cols-7";
 
 export default function ConnectFourCells({
   cells,
   winningCells,
   moveInProgress,
+  animatingCell,
   onHandlePlayerTurn,
 }: ConnectFourCellsProps) {
   return (
-    <div className={`grid ${gridColsClass} gap-4 mt-4`}>
+    <div
+      role="grid"
+      aria-label="Connect Four game board"
+      className="grid gap-2 p-4 bg-blue-600 rounded-lg mt-4"
+      style={{
+        gridTemplateColumns: `repeat(${COLS}, 1fr)`,
+        gridTemplateRows: `repeat(${ROWS}, 1fr)`,
+      }}
+    >
       {cells.map((cell, index) => (
         <ConnectFourCell
           disabled={moveInProgress}
@@ -29,6 +33,7 @@ export default function ConnectFourCells({
           index={index}
           cell={cell}
           highlight={winningCells.includes(index)}
+          isAnimating={animatingCell === index}
           onHandlePlayerTurn={onHandlePlayerTurn}
         />
       ))}

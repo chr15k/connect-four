@@ -10,6 +10,7 @@ export default function ConnectFour() {
     cells,
     allCellsEmpty,
     moveInProgress,
+    animatingCell,
     handlePlayerTurn,
     handleReset,
     handleUndo,
@@ -17,7 +18,6 @@ export default function ConnectFour() {
 
   return (
     <div className="border rounded-xl p-8">
-      <h1>Connect Four</h1>
       <ConnectFourControls
         activePlayer={activePlayer}
         winner={winner}
@@ -29,6 +29,7 @@ export default function ConnectFour() {
         cells={cells}
         winningCells={winningCells}
         moveInProgress={moveInProgress}
+        animatingCell={animatingCell}
         onHandlePlayerTurn={handlePlayerTurn}
       />
     </div>
