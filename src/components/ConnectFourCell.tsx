@@ -28,17 +28,18 @@ export default memo(function ConnectFourCell({
       disabled={isDisabled}
       className={`${getCellColorClass(
         cell,
-        highlight,
-      )} h-22 w-22 rounded-full flex items-center justify-center
+        highlight
+      )} w-full h-full rounded-full flex items-center justify-center
       transition-all duration-200 ease-in-out
-      ${isAnimating ? "scale-110 shadow-lg" : ""}
+      shadow-inner
+      ${isAnimating ? "scale-110 shadow-2xl" : ""}
       ${
         !isDisabled && isEmpty
-          ? "hover:scale-105 hover:opacity-70 cursor-pointer"
+          ? "hover:scale-105 hover:brightness-110 cursor-pointer"
           : ""
       }
-      ${isDisabled ? "cursor-not-allowed" : ""}
-      ${highlight ? "ring-4 ring-yellow-300 shadow-xl animate-pulse" : ""}`}
+      ${isDisabled && !isEmpty ? "cursor-not-allowed" : ""}
+      ${highlight ? "ring-4 ring-yellow-300 shadow-2xl animate-pulse" : ""}`}
     ></button>
   );
 });

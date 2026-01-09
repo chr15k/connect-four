@@ -2,7 +2,7 @@ import { type WinResult, type Cell, COLS, ROWS } from "../types/game";
 
 export function checkWinner(
   latestIndex: number,
-  cells: Cell[],
+  cells: Cell[]
 ): WinResult | null {
   const directions = [
     { x: 1, y: 0 }, // Horizontal
@@ -49,10 +49,14 @@ export function checkWinner(
 
 export function getCellColorClass(cell: Cell, isWinning: boolean = false) {
   if (cell.player === "Red") {
-    return isWinning ? "bg-red-700 ring-4 ring-white" : "bg-red-700";
+    return isWinning
+      ? "bg-gradient-to-br from-red-400 to-red-600 shadow-lg"
+      : "bg-gradient-to-br from-red-500 to-red-700 shadow-md";
   } else if (cell.player === "Yellow") {
-    return isWinning ? "bg-yellow-600 ring-4 ring-white" : "bg-yellow-600";
+    return isWinning
+      ? "bg-gradient-to-br from-yellow-300 to-yellow-500 shadow-lg"
+      : "bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-md";
   } else {
-    return "bg-gray-600 opacity-50 hover:bg-gray-200 transition-all duration-200 cursor-pointer";
+    return "bg-gray-900 shadow-inner border-2 border-gray-800";
   }
 }
